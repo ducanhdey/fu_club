@@ -6,8 +6,18 @@ import com.jsclub.fptuclub.Model.Entity.Role;
 import com.jsclub.fptuclub.Model.Entity.Users;
 import com.jsclub.fptuclub.Model.Service.RoleService;
 import com.jsclub.fptuclub.Model.Service.UserService;
+import com.jsclub.fptuclub.Payload.Request.LoginRequest;
 import com.jsclub.fptuclub.Payload.Request.SignupRequest;
+import com.jsclub.fptuclub.Payload.Response.JwtResponse;
+import com.jsclub.fptuclub.Security.CustomUserDetails;
+import org.apache.catalina.Authenticator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +30,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @CrossOrigin
 @Controller
@@ -32,16 +44,36 @@ public class UserController {
 	private RoleService roleService;
 	@Autowired
 	private JwtTokenProvider jwtTokenProvider;
+	@Autowired
+	private AuthenticationManager authenticationManager;
 
-	@GetMapping({"/home","/"})
+
+	@GetMapping({"/home", "/"})
 	public String homePage() {
 		return "index";
 	}
 
 	@GetMapping("/login")
-	public String loginPage() {
-
+	public String loginPage(Model model) {
+		LoginRequest loginRequest = new LoginRequest();
+		model.addAttribute("loginRequest",loginRequest);
 		return "login";
+
+	}
+
+	@PostMapping("/signin")
+	public ResponseEntity<?> loginUser(@ModelAttribute("loginRequest") LoginRequest loginRequest) {
+		Authentication authentication = authenticationManager.authenticate(
+				new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword())
+		);
+		SecurityContextHolder.getContext().setAuthentication(authentication);
+		CustomUserDetails customUserDetails = (CustomUserDetails) authentication.getPrincipal();
+		//Sinh jwt tra ve client
+		String jwt = jwtTokenProvider.generateToken(customUserDetails);
+		//lay cac quyen cua user
+		List<String> roles = customUserDetails.getAuthorities().stream()
+				.map(item->item.getAuthority()).collect(Collectors.toList());
+		return ResponseEntity.ok(new JwtResponse(jwt, customUserDetails.getUsername(), customUserDetails.getEmail(),roles));
 	}
 
 	@GetMapping("/registration")
@@ -70,9 +102,9 @@ public class UserController {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Date now = new Date();
 		String dateNow = sdf.format(now);
-		try{
+		try {
 			user.setCreated(sdf.parse(dateNow));
-		}catch (Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		user.setUserStatus(true);
