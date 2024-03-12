@@ -6,34 +6,25 @@
 </head>
 <body>
 <div align="center">
+    <!-- success message -->
+    <div th:if="${param.success}">
+        <div class="alert alert-info">You've successfully registered
+            to our awesome app!</div>
+    </div>
     <h1>Registration</h1>
     <br>
-    <form action="#" th:action="@{/register}" method="post" th:object="${user}">
+    <form action="#" th:action="@{/signup}" method="post" th:object="${signuprequest}">
         <table cellpadding="5">
-            <tr>
-                <td>StudentID</td>
-                <td><input type="number" th:field="*{studentId}"></td>
-            </tr>
-            <tr>
-                <td>Full name</td>
-                <td><input type="text" th:field="*{fullName}"></td>
-            </tr>
-            <tr>
-                <td>Gender</td>
-                <td><select th:field="*{gender}">
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                    <option value="Secret">Secret</option>
-                </select></td>
-            </tr>
             <tr>
                 <td>Email</td>
                 <td><input type="email" th:field="*{email}" required> </td>
+                <td th:text="Email is already exist" th:if="${checkExistEmail == true}"></td>
             </tr>
 
             <tr>
                 <td>Username</td>
-                <td><input type="text" th:field="*{userName}" required></td>
+                <td><input type="text" th:field="*{username}" required></td>
+                <td th:text="Username is already exist" th:if="${checkExistUser == true}"></td>
             </tr>
             <tr>
                 <td>Password</td>
@@ -41,7 +32,8 @@
             </tr>
             <tr>
                 <td><button type="submit">Register</button></td>
-                <td><a th:href="@{/login}">A member -> Login</a></td>
+               <td> <span>Already registered? <a href="/" th:href="@{/login}">Login
+								here</a></span></td>
             </tr>
         </table>
     </form>

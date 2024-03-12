@@ -1,61 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
-    <meta charset="ISO-8859-1">
-    <title> Login App</title>
-
-
-
+    <meta charset="UTF-8">
+    <title>Login</title>
 </head>
 <body>
-
-
-<br>
-<br>
 <div align="center">
-    <div>
-        <div>
-
-            <h1> User Login Page </h1>
-            <form th:action="@{/login}" method="post">
-
-                <!-- error message -->
-                <div th:if="${param.error}">
-                    <div>Invalid username or
-                        password.
-                    </div>
-                </div>
-
-                <!-- logout message -->
-                <div th:if="${param.logout}">
-                    <div class="alert alert-info">You have been logged out.</div>
-                </div>
-
-                <div class="form-group">
-                    <label> Username </label> :
-                    <input type="text" name="username"
-                    >
-                </div>
-
-                <div>
-                    <label>Password</label>: <input type="password"/>
-                </div>
-
-                <div>
-                    <div>
-                        <div>
-                            <input type="submit"
-                                   value="Log In"/>
-                        </div>
-                    </div>
-                </div>
-            </form>
-            <div class="form-group">
-						<span>New user? <a href="/" th:href="@{/registration}">Register
+    <h1>Login</h1>
+    <form action="#" th:action="@{/login}" method="post">
+        <table>
+            <tr>
+                <td>Username</td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type="text"></td>
+            </tr>
+            <tr align="center">
+                <td>
+                    <button type="submit">Login</button>
+                </td>
+                <td>
+          <span>Not yet registered? <a href="/" th:href="@{/registration}">Register
 								here</a></span>
-            </div>
-        </div>
-    </div>
+                </td>
+            </tr>
+        </table>
+    </form>
 </div>
 </body>
 </html>
