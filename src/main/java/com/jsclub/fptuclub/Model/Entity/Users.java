@@ -33,4 +33,8 @@ public class Users {
 			inverseJoinColumns = @JoinColumn(name = "roles_RoleID"))
 	private Set<Role> roles = new LinkedHashSet<>();
 
+	@ManyToOne
+	@JoinColumn(name = "members_id")
+	private Members members;
+
 }

@@ -33,6 +33,17 @@ public class CLB {
     @JoinColumn(name = "type_type_id")
     private Type type;
 
+    @OneToMany(mappedBy = "clubID", orphanRemoval = true)
+    private Set<Post> posts = new LinkedHashSet<>();
+
+    public Set<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(Set<Post> posts) {
+        this.posts = posts;
+    }
+
     public Type getType() {
         return type;
     }
