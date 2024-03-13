@@ -33,8 +33,20 @@ public class Users {
 			inverseJoinColumns = @JoinColumn(name = "roles_RoleID"))
 	private Set<Role> roles = new LinkedHashSet<>();
 
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
+	@JoinTable(name = "member",
+			joinColumns = @JoinColumn(name = "users_UserID"),
+			inverseJoinColumns = @JoinColumn(name = "CLBs_cid"))
+	private Set<CLB> clb = new LinkedHashSet<>();
+
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
+	@JoinTable(name = "Request",
+			joinColumns = @JoinColumn(name = "users_UserID"),
+			inverseJoinColumns = @JoinColumn(name = "clb_cid"))
+	private Set<CLB> clbs = new LinkedHashSet<>();
+
 	@ManyToOne
-	@JoinColumn(name = "members_id")
-	private Members members;
+	@JoinColumn(name = "role_role_id")
+	private Role role;
 
 }
