@@ -1,23 +1,31 @@
 package com.jsclub.fptuclub.Model.Entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "Role")
+@Table(name = "Roles")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Role {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "RoleID")
 	private int roleID;
-	@Column(name = "RoleName", nullable = false)
-	private int roleName;
+
+	@Column(name = "Role name")
+	private String roleName;
 
 	@OneToMany(mappedBy = "role", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<Users> userses = new LinkedHashSet<>();
 
+	public Role(String eRole) {
+		this.roleName = eRole;
+	}
 }

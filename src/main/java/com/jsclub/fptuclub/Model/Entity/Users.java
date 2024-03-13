@@ -27,11 +27,6 @@ public class Users {
 	private boolean UserStatus;
 	@Column(name = "email")
 	private String email;
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "Users_roles",
-			joinColumns = @JoinColumn(name = "users_UserID"),
-			inverseJoinColumns = @JoinColumn(name = "roles_RoleID"))
-	private Set<Role> roles = new LinkedHashSet<>();
 
 	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
 	@JoinTable(name = "member",
