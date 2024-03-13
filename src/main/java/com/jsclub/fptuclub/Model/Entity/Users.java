@@ -32,4 +32,8 @@ public class Users {
 	@JoinColumn(name = "role_role_id")
 	private Role role;
 
+	@ManyToOne
+	@JoinColumn(name = "members_id")
+	private Members members;
+
 }
