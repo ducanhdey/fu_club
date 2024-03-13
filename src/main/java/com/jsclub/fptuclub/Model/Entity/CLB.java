@@ -2,9 +2,7 @@ package com.jsclub.fptuclub.Model.Entity;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "CLB")
@@ -35,6 +33,21 @@ public class CLB {
 
     @OneToMany(mappedBy = "clubID", orphanRemoval = true)
     private Set<Post> posts = new LinkedHashSet<>();
+
+
+
+    @ManyToMany(mappedBy = "clubS", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
+    private List<Users> usersS = new ArrayList<>();
+
+    public List<Users> getUsersS() {
+        return usersS;
+    }
+
+    public void setUsersS(List<Users> usersS) {
+        this.usersS = usersS;
+    }
+
+
 
     public Set<Post> getPosts() {
         return posts;

@@ -4,9 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.Date;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "Users")
@@ -32,8 +30,10 @@ public class Users {
 	@JoinColumn(name = "role_role_id")
 	private Role role;
 
-	@ManyToOne
-	@JoinColumn(name = "members_id")
-	private Members members;
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
+	@JoinTable(name = "Users_clbS",
+			joinColumns = @JoinColumn(name = "users_UserID"),
+			inverseJoinColumns = @JoinColumn(name = "clb_CID"))
+	private List<CLB> clubS = new ArrayList<>();
 
 }

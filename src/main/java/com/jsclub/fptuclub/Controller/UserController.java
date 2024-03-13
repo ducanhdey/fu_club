@@ -54,18 +54,18 @@ public class UserController {
 
 	@PostMapping("/signin")
 	public String loginUser(@ModelAttribute("loginRequest") LoginRequest loginRequest) {
-		System.out.println("aaaaaa");
+//		System.out.println("aaaaaa");
 		Authentication authentication = authenticationManager.authenticate(
 				new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword())
 		);
-		System.out.println("bbbbbbb");
+//		System.out.println("bbbbbbb");
 		SecurityContextHolder.getContext().setAuthentication(authentication);
-		System.out.println("ccccc");
+//		System.out.println("ccccc");
 		CustomUserDetails customUserDetails = (CustomUserDetails) authentication.getPrincipal();
 		//Sinh jwt tra ve client
 		String jwt = jwtTokenProvider.generateToken(customUserDetails);
 		//lay cac quyen cua user
-		System.out.println(jwt);
+//		System.out.println(jwt);
 //		List<String> roles = customUserDetails.getAuthorities().stream()
 //				.map(item->item.getAuthority()).collect(Collectors.toList());
 
@@ -81,14 +81,14 @@ public class UserController {
 
 	@PostMapping("/signup")
 	public String registerUser(@ModelAttribute("signupRequest") SignupRequest signupRequest, Model model) {
-//		if (userService.existsByUsername(signupRequest.getUsername())) {
-////			boolean checkExistUser = true;
-//			return "redirect:/registration";
-//		}
-//		if (userService.existsByEmail(signupRequest.getEmail())) {
-////			boolean checkExistEmail = true;
-//			return "redirect:/registration";
-//		}
+		if (userService.existsByUsername(signupRequest.getUsername())) {
+//			boolean checkExistUser = true;
+			return "redirect:/registration";
+		}
+		if (userService.existsByEmail(signupRequest.getEmail())) {
+//			boolean checkExistEmail = true;
+			return "redirect:/registration";
+		}
 		System.out.println("aaaaa");
 		Users user = new Users();
 		user.setUsername(signupRequest.getUsername());
@@ -104,24 +104,7 @@ public class UserController {
 		}
 		user.setUserStatus(true);
 		user.setRole(new Role("USER"));
-//		if (strRoles == null) {
-//			//User quyen mac dinh
-//			Role userRole = roleService.findByRoleName(ERole.ROLE_USER).get();
-//			roles.add(userRole);
-//		} else {
-//			strRoles.forEach(role -> {
-//				switch (role) {
-//					case "admin":
-//						Role adminRole = roleService.findByRoleName(ERole.ROLE_ADMIN)
-//								.orElseThrow(() -> new RuntimeException("Role is not found"));
-//						roles.add(adminRole);
-//					case "user":
-//						Role userRole = roleService.findByRoleName(ERole.ROLE_USER)
-//								.orElseThrow(() -> new RuntimeException("Role is not found"));
-//						roles.add(userRole);
-//				}
-//			});
-//		}
+
 
 		userService.saveOrUpdate(user);
 		return "redirect:/registration?success";
