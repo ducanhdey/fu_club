@@ -7,6 +7,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -29,9 +31,9 @@ public class CustomUserDetails implements UserDetails{
 	// tu chuyen thong tin tu uuser sang userdetail
 	public static CustomUserDetails mapUserToUserDetail(Users user){
 		//lay cac quyen tu user
-		List<GrantedAuthority> listAuthorities = user.getRoles().stream()
-				.map(role -> new SimpleGrantedAuthority(role.getRoleName().name()))
-				.collect(Collectors.toList());
+		SimpleGrantedAuthority authority = new SimpleGrantedAuthority("USER");
+		List<GrantedAuthority> listAuthorities = new ArrayList<GrantedAuthority>();
+		listAuthorities.add(authority);
 		//tra ve doi tuong customuserdetail
 		return new CustomUserDetails(user.getUserID(),
 									 user.getUsername(),

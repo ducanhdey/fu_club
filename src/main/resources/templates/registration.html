@@ -13,18 +13,16 @@
     </div>
     <h1>Registration</h1>
     <br>
-    <form action="#" th:action="@{/signup}" method="post" th:object="${signuprequest}">
+    <form th:action="@{/signup}" method="post" th:object="${signupRequest}">
         <table cellpadding="5">
             <tr>
                 <td>Email</td>
                 <td><input type="email" th:field="*{email}" required> </td>
-                <td th:text="Email is already exist" th:if="${checkExistEmail == true}"></td>
             </tr>
 
             <tr>
                 <td>Username</td>
                 <td><input type="text" th:field="*{username}" required></td>
-                <td th:text="Username is already exist" th:if="${checkExistUser == true}"></td>
             </tr>
             <tr>
                 <td>Password</td>

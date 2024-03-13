@@ -1,17 +1,24 @@
 package com.jsclub.fptuclub.Model.Entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "Role")
+@Table(name = "Roles")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Role {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "RoleID")
 	private int roleID;
 	@Column(name = "Role name")
-	@Enumerated(EnumType.STRING)
-	private ERole roleName;
+	private String roleName;
+
+	public Role(String eRole) {
+		this.roleName = eRole;
+	}
 }

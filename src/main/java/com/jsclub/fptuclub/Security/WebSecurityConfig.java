@@ -59,7 +59,8 @@ public class WebSecurityConfig  {
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests(auth -> auth
-						.requestMatchers("/registration").permitAll()
+						.requestMatchers("/registration","/login","/signup","/signin","/**").permitAll()
+//						.requestMatchers("/home").authenticated()
 				//cho phep tat ca moi nguoi truy cap
 						.anyRequest().authenticated())
 				.httpBasic(withDefaults())

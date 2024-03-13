@@ -1,5 +1,6 @@
 package com.jsclub.fptuclub.Payload.Request;
 
+import com.jsclub.fptuclub.Model.Entity.Role;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.text.SimpleDateFormat;
@@ -11,7 +12,7 @@ public class SignupRequest {
 	public SignupRequest() {
 	}
 
-	public SignupRequest(String username, String password, String email, Date created, boolean userStatus, Set<String> roles) {
+	public SignupRequest(String username, String password, String email, Date created, boolean userStatus, Role role) {
 		this.username = username;
 		this.password = password;
 		this.email = email;
@@ -24,7 +25,7 @@ public class SignupRequest {
 			e.printStackTrace();
 		}
 		this.userStatus = true;
-		this.roles = roles;
+		this.role = role;
 	}
 
 	private String username;
@@ -33,7 +34,7 @@ public class SignupRequest {
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date created;
 	private boolean userStatus;
-	private Set<String> roles;
+	private Role role;
 
 	public String getUsername() {
 		return username;
@@ -75,11 +76,11 @@ public class SignupRequest {
 		this.userStatus = userStatus;
 	}
 
-	public Set<String> getRoles() {
-		return roles;
+	public Role getRole() {
+		return role;
 	}
 
-	public void setRoles(Set<String> role) {
-		this.roles = role;
+	public void setRole(Role role) {
+		this.role = role;
 	}
 }

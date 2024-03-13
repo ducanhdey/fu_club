@@ -7,7 +7,7 @@
 <body>
 <div align="center">
     <h1>Login</h1>
-    <form action="#" th:action="@{/signin}" method="post" th:object="${loginRequest}">
+    <form th:action="@{/signin}" method="post" th:object="${loginRequest}">
         <table>
             <tr>
                 <td>Username</td>
@@ -22,7 +22,7 @@
                     <button type="submit">Login</button>
                 </td>
                 <td>
-          <span>Not yet registered? <a href="/" th:href="@{/registration}">Register
+          <span>Not yet registered? <a  th:href="@{/registration}">Register
 								here</a></span>
                 </td>
             </tr>

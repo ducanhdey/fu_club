@@ -27,10 +27,9 @@ public class Users {
 	private boolean UserStatus;
 	@Column(name = "email")
 	private String email;
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "Users_roles",
-			joinColumns = @JoinColumn(name = "users_UserID"),
-			inverseJoinColumns = @JoinColumn(name = "roles_RoleID"))
-	private Set<Role> roles = new LinkedHashSet<>();
+
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "role_role_id")
+	private Role role;
 
 }
