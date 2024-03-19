@@ -9,6 +9,7 @@ import com.jsclub.fptuclub.Payload.Request.LoginRequest;
 import com.jsclub.fptuclub.Payload.Request.SignupRequest;
 import com.jsclub.fptuclub.Security.CustomUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -48,6 +49,7 @@ public class UserController {
 	public String loginPage(Model model) {
 		LoginRequest loginRequest = new LoginRequest();
 		model.addAttribute("loginRequest",loginRequest);
+		model.addAttribute("contentType", "application/json");
 		return "login";
 
 	}
@@ -72,11 +74,11 @@ public class UserController {
 	public String registration(Model model) {
 		SignupRequest signupRequest = new SignupRequest();
 		model.addAttribute("signupRequest",signupRequest);
+		model.addAttribute("contentType", "application/json");
 		return "registration";
 	}
-
 	@PostMapping("/signup")
-	public String registerUser(@ModelAttribute("signupRequest") SignupRequest signupRequest, Model model) {
+	public String registerUser(@ModelAttribute("signupRequest") SignupRequest signupRequest) {
 		if (userService.existsByUsername(signupRequest.getUsername())) {
 //			boolean checkExistUser = true;
 			return "redirect:/registration?existusername";
@@ -97,12 +99,15 @@ public class UserController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		user.setFullName(signupRequest.getFullName());
+		user.setStudentid(signupRequest.getStudentid());
+		user.setGender(signupRequest.getGender());
 		user.setUserStatus(true);
 		user.setRole(new Role("USER"));
 
 
 		userService.saveOrUpdate(user);
-		return "redirect:/registration?success";
+		return "redirect:/login";
 	}
 
 }

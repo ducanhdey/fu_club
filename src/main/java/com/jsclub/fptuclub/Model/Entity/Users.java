@@ -20,6 +20,8 @@ public class Users {
 	private String username;
 	@Column(name = "Password",nullable = false)
 	private String password;
+	@Column(name = "Full Name")
+	private String fullName;
 	@Column(name = "Created")
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private Date created;

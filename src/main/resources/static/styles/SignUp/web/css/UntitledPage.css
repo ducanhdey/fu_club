@@ -1,6 +1,5 @@
 .untitled-page.main {
-  background: var(--src) center center/100% 100% no-repeat;
-  background-color: white;
+  background: url("../assets/cartoon_school_life_scene.png")  center center/100% 100% no-repeat white;
   display: flex;
   flex-direction: column;
   overflow: hidden;

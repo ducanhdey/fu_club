@@ -12,7 +12,7 @@ public class SignupRequest {
 	public SignupRequest() {
 	}
 
-	public SignupRequest(String username, String password, String email, Date created, boolean userStatus, Role role) {
+	public SignupRequest(String username, String password, String email, Date created, boolean userStatus, Role role,String studentid,String fullName,String gender) {
 		this.username = username;
 		this.password = password;
 		this.email = email;
@@ -26,11 +26,18 @@ public class SignupRequest {
 		}
 		this.userStatus = true;
 		this.role = role;
+		this.studentid = studentid;
+		this.fullName = fullName;
+		this.gender = gender;
+
 	}
 
 	private String username;
 	private String password;
 	private String email;
+	private String fullName;
+	private String gender;
+	private String studentid;
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date created;
 	private boolean userStatus;
@@ -82,5 +89,29 @@ public class SignupRequest {
 
 	public void setRole(Role role) {
 		this.role = role;
+	}
+
+	public String getFullName() {
+		return fullName;
+	}
+
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public String getStudentid() {
+		return studentid;
+	}
+
+	public void setStudentid(String studentid) {
+		this.studentid = studentid;
 	}
 }
