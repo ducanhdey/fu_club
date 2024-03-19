@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Share Page</title>
+    <!-- Import jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+<h1>Share Page</h1>
+<button id="shareButton">Share</button>
+
+<!-- Script to handle share button click -->
+<script th:inline="javascript">
+    $(document).ready(function() {
+        $('#shareButton').click(function() {
+            // Lấy URL hiện tại
+            var currentUrl = "ducanhdeptrai";
+
+            // Copy URL vào clipboard
+            navigator.clipboard.writeText(currentUrl)
+                .then(function() {
+                    alert("Copy URL successfully!!!")
+                })
+                .catch(function(err) {
+                    console.error('Cannot copy: ', err);
+                });
+        });
+    });
+</script>
+</body>
+</html>

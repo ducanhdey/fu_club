@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+<h1>Hello</h1>
+<div>
+    <form method="get" th:action="@{/home/searchclb}">
+        <span>Search</span>
+        <input type="text" name="keyword" placeholder="Enter search keyword" />
+        <button type="submit">Search</button>
+    </form>
+</div>
+<br>
+<hr>
+<div>
+
+        <div th:if="${param.notfound}">
+            <div>Không tìm thấy câu lạc bộ nào tên như lày bạn nhập lại cho mình để tìm kiếm nhé :3</div>
+        </div>
+
+    <table cellpadding="10" border="1">
+        <thead>
+        <tr>
+            <th>Full Name</th>
+            <th>Short Name</th>
+            <th>Date</th>
+            <th>Email</th>
+            <th>Logo</th>
+            <th>Intro</th>
+            <th>Background</th>
+            <th>Facebook</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr th:each="clb : ${listfoundclb}">
+                <td><img th:src="${clb.background}" />
+                </td>
+                <td th:text="@{clb.fullName}"></td>
+                <td th:text="@{clb.shortName}"></td>
+                <td th:text="@{clb.fullName}"></td>
+                <td th:text="@{clb.fullName}"></td>
+                <td th:text="@{clb.fullName}"></td>
+                <td th:text="@{clb.fullName}"></td>
+                <td th:text="@{clb.fullName}"></td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

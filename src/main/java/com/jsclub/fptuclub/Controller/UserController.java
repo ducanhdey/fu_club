@@ -64,12 +64,8 @@ public class UserController {
 		CustomUserDetails customUserDetails = (CustomUserDetails) authentication.getPrincipal();
 		//Sinh jwt tra ve client
 		String jwt = jwtTokenProvider.generateToken(customUserDetails);
-		//lay cac quyen cua user
-//		System.out.println(jwt);
-//		List<String> roles = customUserDetails.getAuthorities().stream()
-//				.map(item->item.getAuthority()).collect(Collectors.toList());
 
-		return "redirect:/";
+		return "redirect:/home";
 	}
 
 	@GetMapping("/registration")
@@ -83,13 +79,12 @@ public class UserController {
 	public String registerUser(@ModelAttribute("signupRequest") SignupRequest signupRequest, Model model) {
 		if (userService.existsByUsername(signupRequest.getUsername())) {
 //			boolean checkExistUser = true;
-			return "redirect:/registration";
+			return "redirect:/registration?existusername";
 		}
 		if (userService.existsByEmail(signupRequest.getEmail())) {
 //			boolean checkExistEmail = true;
-			return "redirect:/registration";
+			return "redirect:/registration?existemail";
 		}
-		System.out.println("aaaaa");
 		Users user = new Users();
 		user.setUsername(signupRequest.getUsername());
 		user.setPassword(passwordEncoder.encode(signupRequest.getPassword()));

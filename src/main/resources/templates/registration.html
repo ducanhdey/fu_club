@@ -19,11 +19,16 @@
                 <td>Email</td>
                 <td><input type="email" th:field="*{email}" required> </td>
             </tr>
-
+            <div th:if="${param.existemail}">
+                <div class="alert alert-info">Email is registed with other account</div>
+            </div>
             <tr>
                 <td>Username</td>
                 <td><input type="text" th:field="*{username}" required></td>
             </tr>
+            <div th:if="${param.existusername}">
+                <div class="alert alert-info">Username is registed with other account</div>
+            </div>
             <tr>
                 <td>Password</td>
                 <td><input type="password" th:field="*{password}" required></td>

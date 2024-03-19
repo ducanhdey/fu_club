@@ -22,9 +22,6 @@ public class Role {
 	@Column(name = "Role name")
 	private String roleName;
 
-	@OneToMany(mappedBy = "role", cascade = CascadeType.ALL, orphanRemoval = true)
-	private Set<Users> userses = new LinkedHashSet<>();
-
 	public Role(String eRole) {
 		this.roleName = eRole;
 	}

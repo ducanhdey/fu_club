@@ -27,7 +27,10 @@ public class Users {
 	private boolean UserStatus;
 	@Column(name = "email")
 	private String email;
-
+	@Column(name="gender")
+	private String gender;
+	@Column(name="studentid",unique = true,nullable = true)
+	private String studentid;
 	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
 	@JoinTable(name = "member",
 			joinColumns = @JoinColumn(name = "users_UserID"),
@@ -40,7 +43,7 @@ public class Users {
 			inverseJoinColumns = @JoinColumn(name = "clb_cid"))
 	private Set<CLB> clbs = new LinkedHashSet<>();
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "role_role_id")
 	private Role role;
 

@@ -60,8 +60,7 @@ public class WebSecurityConfig  {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests(auth -> auth
 						.requestMatchers("/registration","/login","/signup","/signin","/**").permitAll()
-//						.requestMatchers("/home").authenticated()
-				//cho phep tat ca moi nguoi truy cap
+						.requestMatchers("/home").authenticated() // only authenticated users can access /home
 						.anyRequest().authenticated())
 				.httpBasic(withDefaults())
 				.formLogin(form -> form
@@ -70,11 +69,8 @@ public class WebSecurityConfig  {
 						.usernameParameter("username")
 						.passwordParameter("password")
 				)
-				//chan truy cap tu domain khac
 				.csrf(AbstractHttpConfigurer::disable);
-		//them mot lop filter kiem tra jwt
 		http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 		return http.build();
-
 	}
 }

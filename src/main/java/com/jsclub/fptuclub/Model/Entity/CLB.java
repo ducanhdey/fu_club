@@ -1,9 +1,12 @@
 package com.jsclub.fptuclub.Model.Entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.*;
-
+@Getter
+@Setter
 @Entity
 @Table(name = "CLB")
 public class CLB {
@@ -11,9 +14,9 @@ public class CLB {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int CID;
     @Column(name = "FullName", unique = true, nullable = false)
-    private String FullName;
-    @Column(name = "ShortName", unique = true, nullable = false)
-    private String ShortName;
+    private String fullName;
+    @Column(name = "shortName", unique = true, nullable = false)
+    private String shortName;
     @Column(name = "Date", nullable = false)
     private Date date;
     @Column(name = "Email", unique = true, nullable = false)
@@ -36,7 +39,7 @@ public class CLB {
 
 
 
-    @ManyToMany(mappedBy = "clubS", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
+    @ManyToMany(mappedBy = "clbs", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     private List<Users> usersS = new ArrayList<>();
 
     public List<Users> getUsersS() {
