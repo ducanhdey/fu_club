@@ -17,7 +17,7 @@ public class Post {
     private CLB clubID;
     @Column(name = "Title", nullable = false)
     private String title;
-    @Column(name = "Image", nullable = false)
+    @Column(name = "Image")
     private String Image;
     @Column(name = "Content", nullable = false)
     private String content;

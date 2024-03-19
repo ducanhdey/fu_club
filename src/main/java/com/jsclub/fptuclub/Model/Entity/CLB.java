@@ -21,11 +21,11 @@ public class CLB {
     private Date date;
     @Column(name = "Email", unique = true, nullable = false)
     private String mail;
-    @Column(name = "Logo", unique = true, nullable = false)
+    @Column(name = "Logo", unique = true)
     private String Logo;
     @Column(name = "Intro", nullable = false)
     private String Intro;
-    @Column(name = "Background", unique = true, nullable = false)
+    @Column(name = "Background", unique = true)
     private String Background;
     @Column(name = "Facebook", unique = true, nullable = false)
     private String fb;
