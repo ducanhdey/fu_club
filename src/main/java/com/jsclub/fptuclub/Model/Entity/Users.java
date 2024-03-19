@@ -44,4 +44,10 @@ public class Users {
 	@JoinColumn(name = "role_role_id")
 	private Role role;
 
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
+	@JoinTable(name = "Manage",
+			joinColumns = @JoinColumn(name = "users_UserID"),
+			inverseJoinColumns = @JoinColumn(name = "CLBs_cid"))
+	private Set<CLB> manage = new LinkedHashSet<>();
+
 }

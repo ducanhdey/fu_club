@@ -89,7 +89,6 @@ public class UserController {
 ////			boolean checkExistEmail = true;
 //			return "redirect:/registration";
 //		}
-		System.out.println("aaaaa");
 		Users user = new Users();
 		user.setUsername(signupRequest.getUsername());
 		user.setPassword(passwordEncoder.encode(signupRequest.getPassword()));
@@ -103,7 +102,7 @@ public class UserController {
 			e.printStackTrace();
 		}
 		user.setUserStatus(true);
-		user.setRole(new Role("USER"));
+		user.setRole(new Role("ADMIN"));
 //		if (strRoles == null) {
 //			//User quyen mac dinh
 //			Role userRole = roleService.findByRoleName(ERole.ROLE_USER).get();

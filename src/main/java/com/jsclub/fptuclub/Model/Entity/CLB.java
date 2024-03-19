@@ -28,6 +28,8 @@ public class CLB {
     private String Background;
     @Column(name = "Facebook", unique = true, nullable = false)
     private String fb;
+    @Column(name="List")
+    private String list;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "type_type_id")
@@ -35,6 +37,17 @@ public class CLB {
 
     @OneToMany(mappedBy = "clubID", orphanRemoval = true)
     private Set<Post> posts = new LinkedHashSet<>();
+
+    @ManyToMany(mappedBy = "manage", cascade = {CascadeType.REFRESH, CascadeType.DETACH})
+    private Set<Users> userses = new LinkedHashSet<>();
+
+    public Set<Users> getUserses() {
+        return userses;
+    }
+
+    public void setUserses(Set<Users> userses) {
+        this.userses = userses;
+    }
 
     public Set<Post> getPosts() {
         return posts;
