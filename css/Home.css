@@ -56,17 +56,17 @@
 }
 
 @media (max-width: 991px) {
-  .home .rect1 {
+  .home .react1 {
     width: 250px;
   }
 }
 @media (max-width: 575px) {
-  .home .rect1 {
+  .home .react1 {
     width: 200px;
   }
 }
 @media (max-width: 479px) {
-  .home .rect1 {
+  .home .react1 {
     width: 100px;
   }
 }
@@ -113,6 +113,19 @@
 .home .image11 {
   height: 50px;
   width: 50px;
+}
+
+.slide-show{
+  width: 600px;
+  display:flex;
+  align-items: center;
+  justify-items: center;
+}
+.list-slide{
+  display:flex;
+  width:500px;
+  overflow: hidden;
+  
 }
 .home .section2 {
   margin-top: 100px;

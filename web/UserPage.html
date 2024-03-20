@@ -103,6 +103,19 @@
             // Call the search API with the search term
             searchAPI(searchTerm);
         });
+        
+        function searchAPI(searchTerm) {
+            // Make an API request to the search endpoint with the search term
+            fetch(`https://api.example.com/search?q=${searchTerm}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Handle the search results
+                    console.log(data);
+                })
+                .catch(error => {
+                    // Handle any errors
+                    console.error(error);
+        }
 
     </script>
 </body>
