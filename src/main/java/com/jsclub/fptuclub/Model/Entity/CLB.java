@@ -49,6 +49,16 @@ public class CLB {
     public void setUsersS(List<Users> usersS) {
         this.usersS = usersS;
     }
+    @ManyToMany(mappedBy = "manage", cascade = {CascadeType.REFRESH, CascadeType.DETACH})
+    private Set<Users> userses = new LinkedHashSet<>();
+
+    public Set<Users> getUserses() {
+        return userses;
+    }
+
+    public void setUserses(Set<Users> userses) {
+        this.userses = userses;
+    }
 
 
 
