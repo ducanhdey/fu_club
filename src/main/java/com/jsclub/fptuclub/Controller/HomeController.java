@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class HomeController {
 	@Autowired
 	private CLBRepository repository;
+
 	@GetMapping("/searchclb")
 	public ModelAndView searchCLB(@RequestParam("keyword") String searchName){
 		ModelAndView mav = new ModelAndView("searchPage");

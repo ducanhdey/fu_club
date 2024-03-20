@@ -41,7 +41,8 @@ public class UserController {
 
 
 	@GetMapping({"/home", "/"})
-	public String homePage() {
+	public String homePage(Model model) {
+		model.addAttribute("contentType", "application/json");
 		return "index";
 	}
 
@@ -56,13 +57,10 @@ public class UserController {
 
 	@PostMapping("/signin")
 	public String loginUser(@ModelAttribute("loginRequest") LoginRequest loginRequest) {
-//		System.out.println("aaaaaa");
 		Authentication authentication = authenticationManager.authenticate(
 				new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword())
 		);
-//		System.out.println("bbbbbbb");
 		SecurityContextHolder.getContext().setAuthentication(authentication);
-//		System.out.println("ccccc");
 		CustomUserDetails customUserDetails = (CustomUserDetails) authentication.getPrincipal();
 		//Sinh jwt tra ve client
 		String jwt = jwtTokenProvider.generateToken(customUserDetails);

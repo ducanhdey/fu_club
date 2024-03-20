@@ -56,8 +56,7 @@ public class WebSecurityConfig  {
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests(auth -> auth
-						.requestMatchers("/registration","/login", "/templates/signup","/signin","/**").permitAll()
-						.requestMatchers("/home").authenticated() // only authenticated users can access /home
+						.requestMatchers("/registration","/login", "/signup","/signin","/**").permitAll()
 						.anyRequest().authenticated())
 				.httpBasic(withDefaults())
 				.formLogin(form -> form
