@@ -40,12 +40,15 @@ public class UserController {
 	private AuthenticationManager authenticationManager;
 
 
-	@GetMapping({"/home", "/"})
-	public String homePage(Model model) {
+	@GetMapping("/")
+	public String startPage(Model model) {
 		model.addAttribute("contentType", "application/json");
 		return "index";
 	}
-
+	@GetMapping("/home")
+	public String homePage(Model model){
+		return "home";
+	}
 	@GetMapping("/login")
 	public String loginPage(Model model) {
 		LoginRequest loginRequest = new LoginRequest();
@@ -76,7 +79,7 @@ public class UserController {
 		return "registration";
 	}
 	@PostMapping("/signup")
-<<<<<<< HEAD
+
 	public String registerUser(@ModelAttribute("signupRequest") SignupRequest signupRequest) {
 		if (userService.existsByUsername(signupRequest.getUsername())) {
 //			boolean checkExistUser = true;
@@ -86,17 +89,9 @@ public class UserController {
 //			boolean checkExistEmail = true;
 			return "redirect:/registration?existemail";
 		}
-=======
-	public String registerUser(@ModelAttribute("signupRequest") SignupRequest signupRequest, Model model) {
-//		if (userService.existsByUsername(signupRequest.getUsername())) {
-////			boolean checkExistUser = true;
-//			return "redirect:/registration";
-//		}
-//		if (userService.existsByEmail(signupRequest.getEmail())) {
-////			boolean checkExistEmail = true;
-//			return "redirect:/registration";
-//		}
->>>>>>> 6e5a41b4f13cd51b210201f3903b2a3803f26b2d
+
+
+
 		Users user = new Users();
 		user.setUsername(signupRequest.getUsername());
 		user.setPassword(passwordEncoder.encode(signupRequest.getPassword()));
@@ -113,30 +108,9 @@ public class UserController {
 		user.setStudentid(signupRequest.getStudentid());
 		user.setGender(signupRequest.getGender());
 		user.setUserStatus(true);
-<<<<<<< HEAD
+
 		user.setRole(new Role("USER"));
 
-=======
-		user.setRole(new Role("ADMIN"));
-//		if (strRoles == null) {
-//			//User quyen mac dinh
-//			Role userRole = roleService.findByRoleName(ERole.ROLE_USER).get();
-//			roles.add(userRole);
-//		} else {
-//			strRoles.forEach(role -> {
-//				switch (role) {
-//					case "admin":
-//						Role adminRole = roleService.findByRoleName(ERole.ROLE_ADMIN)
-//								.orElseThrow(() -> new RuntimeException("Role is not found"));
-//						roles.add(adminRole);
-//					case "user":
-//						Role userRole = roleService.findByRoleName(ERole.ROLE_USER)
-//								.orElseThrow(() -> new RuntimeException("Role is not found"));
-//						roles.add(userRole);
-//				}
-//			});
-//		}
->>>>>>> 6e5a41b4f13cd51b210201f3903b2a3803f26b2d
 
 		userService.saveOrUpdate(user);
 		return "redirect:/login";

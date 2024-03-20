@@ -26,26 +26,18 @@
         <tr>
             <th>Full Name</th>
             <th>Short Name</th>
-            <th>Date</th>
-            <th>Email</th>
-            <th>Logo</th>
             <th>Intro</th>
-            <th>Background</th>
-            <th>Facebook</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>
             <tr th:each="clb : ${listfoundclb}">
-                <td><img th:src="${clb.background}" />
-                </td>
                 <td th:text="@{clb.fullName}"></td>
                 <td th:text="@{clb.shortName}"></td>
-                <td th:text="@{clb.fullName}"></td>
-                <td th:text="@{clb.fullName}"></td>
-                <td th:text="@{clb.fullName}"></td>
-                <td th:text="@{clb.fullName}"></td>
-                <td th:text="@{clb.fullName}"></td>
-
+                <td th:text="@{clb.intro}"></td>
+                <td colspan="2">
+                    <a th:href="@{'/view/'+${clb.CID}}">View</a>
+                </td>
             </tr>
         </tbody>
     </table>

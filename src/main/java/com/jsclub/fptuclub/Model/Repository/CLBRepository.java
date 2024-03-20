@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 public interface CLBRepository extends JpaRepository<CLB,Integer> {
  	CLB findByFullName(String FullName);
 	CLB findByShortName(String ShortName);
+	CLB findByCID(Integer CID);
 }
