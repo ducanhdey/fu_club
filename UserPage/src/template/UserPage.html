@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <!--  This source code is exported from pxCode, you can get more document from https://www.pxcode.io  -->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
+    <!-- Please DO NOT remove this line, all link and script tags will be merged to here -->
+
+    <link rel="stylesheet" type="text/css" href="/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="/css/fonts.css" />
+    <link rel="stylesheet" type="text/css" href="/css/headroom.css" />
+    <link rel="stylesheet" type="text/css" href="/css/UserPage.css" />
+
+    <script type="text/javascript" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/sticky-js@1.3.0/dist/sticky.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/headroom.js@0.12.0/dist/headroom.min.js"></script>
+  </head>
+
+  <body class="flex-column">
+    <header id="header" class="headroom">
+      <nav class="max:show">
+        <!-- prettier-ignore -->
+        @@include('./Header.html')
+      </nav>
+    </header>
+    <main class="user-page main">
+      <section class="section1">
+        <div class="flex_row">
+          <div class="flex_row1">
+            <div class="rect1"></div>
+            <img class="image" src="/assets/magnifying_glass_icon.jpg" alt="alt text" />
+          </div>
+          <h1 class="title">FUCLUB</h1>
+          <div class="flex_row2">
+            <img class="image1" src="/assets/people_silhouettes.jpg" alt="alt text" /><img
+              class="image1"
+              src="/assets/b4e06bdad482d98db1242a496d92cad8.png"
+              alt="alt text"
+            /><img class="image11" src="/assets/certified_quality_certification_badge.png" alt="alt text" />
+          </div>
+        </div>
+      </section>
+
+      <section class="section2">
+        <div class="flex_row3">
+          <div class="flex_col">
+            <div class="flex_col1">
+              <h2 class="medium_title1">Thông tin cá nhân<br /></h2>
+              <div class="rect6"></div>
+            </div>
+            <h2 class="medium_title1">
+              Họ và tên: ...................................<br />Mã Sinh viên: .............................<br />Câu
+              lạc bộ: .................................
+            </h2>
+          </div>
+          <div class="flex_col2">
+            <div class="flex_row4">
+              <h2 class="medium_title11">Đăng nhập</h2>
+              <h2 class="medium_title1">Đăng kí</h2>
+            </div>
+            <h2 class="medium_title12">Đổi mật khẩu</h2>
+            <h2 class="medium_title13">Đổi ảnh đại diện</h2>
+            <h2 class="medium_title12">Đăng xuất</h2>
+          </div>
+        </div>
+      </section>
+
+      <section class="section3">
+        <div class="rect3"></div>
+        <div class="rect31"></div>
+        <div class="flex_row5">
+          <div class="flex_col3">
+            <h1 class="title1">Contact</h1>
+            <h2 class="medium_title">Team 1</h2>
+            <h2 class="medium_title2">FPT JS Club</h2>
+            <h2 class="medium_title3">Đại Học FPT</h2>
+          </div>
+          <div class="flex_col4">
+            <h1 class="title11">FEEDBACK</h1>
+            <div class="rect4"></div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+    <script type="text/javascript">
+      AOS.init();
+      new Sticky('.sticky-effect');
+
+      const header = document.querySelector("#header");
+      if(header) {
+          const headroom = new Headroom(header);
+          headroom.init();
+      }
+    </script>
+  </body>
+</html>

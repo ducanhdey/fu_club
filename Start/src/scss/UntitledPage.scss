@@ -1,0 +1,101 @@
+@use "utils" as *;
+@use "global" as *;
+
+.untitled-page {
+  &.main {
+    background: var(--src) center center / 100% 100% no-repeat;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .section1 {
+    display: flex;
+    flex-direction: column;
+  }
+  .section11 {
+    background: var(--src) center center / 100% 100% no-repeat;
+    border-radius: 50px 50px 50px 50px;
+    display: flex;
+    flex-direction: column;
+    margin: 376px 0px 394px 15.9%;
+    width: 432px;
+    @include xxs {
+      width: 250px;
+    }
+  }
+  .flex_col {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 27px 0px;
+    margin: 28px auto 38px;
+    width: 296px;
+    @include tn {
+      width: 250px;
+    }
+  }
+  .title {
+    color: rgb(0, 0, 0);
+    display: flex;
+    font: 400 32px/1.34 "Exo", Helvetica, Arial, serif;
+    @include xxs {
+      align-items: flex-start;
+      font-size: 28px;
+      justify-content: center;
+      margin: 0px 32.88% 0px 20%;
+      text-align: center;
+    }
+    @include tn {
+      margin: 0px 50.88px 0px 20%;
+    }
+  }
+  .flex_col1 {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 36px 0px;
+    width: 100%;
+    @include tn {
+      width: 209px;
+    }
+  }
+  .highlight {
+    color: rgb(0, 0, 0);
+    display: flex;
+    font: 400 16px/1.31 "Exo", Helvetica, Arial, serif;
+    justify-content: center;
+    text-align: center;
+    @include xxs {
+      align-items: center;
+      font-size: 16px;
+      height: 80px;
+      margin: 0px 45px 0px 0%;
+      width: 250px;
+    }
+    @include tn {
+      margin: 0px 0px 0px 0%;
+    }
+  }
+  .content_box {
+    background-color: rgb(245, 201, 201);
+    border-radius: 20px 20px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    width: 27.03%;
+    @include xxs {
+      margin: 0px 54px 0px 0px;
+    }
+    @include tn {
+      margin: 0px 22px 0px 0px;
+    }
+  }
+  .highlight1 {
+    color: rgb(0, 0, 0);
+    display: flex;
+    font: 400 16px/1.31 "Exo", Helvetica, Arial, serif;
+    justify-content: center;
+    margin: 10px 16px 9px;
+    text-align: center;
+  }
+}
