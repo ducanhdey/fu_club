@@ -6,7 +6,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
 
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
     <link rel="stylesheet" type="text/css" href="./css/common.css" />
@@ -22,12 +24,12 @@
 </head>
 
 <body class="flex-column">
-    
-    
+
+
     <main class="user-page main">
         <section class="section1">
             <div class="flex_row">
-               
+
                 <div class="flex_row1">
                     <input class="react1" type="search" id="search-input" placeholder="Search..." />
                     <button id="search-button" class="search-button">
@@ -39,9 +41,10 @@
                 </a>
 
                 <div class="flex_row2">
-                    <i class="fa-solid fa-2xl fa-user image1"></i>
-                    <i class="fa-solid fa-2xl fa-bell image1"></i>
-                    <img class="image11" src="./assets/certified_quality_certification_badge.png" alt="alt text" />
+                    <a class="link-click" href="/web/UserPage.html"><i class="fa-solid fa-2xl fa-user image1"></i></a>
+                    <a class="link-click" href="#"><i id="bell" class="fa-solid fa-2xl fa-bell image1"></i></a>
+                    <a class="link-click" href="#"><img class="image11"
+                            src="./assets/certified_quality_certification_badge.png" alt="alt text" /></a>
                 </div>
             </div>
         </section>
@@ -52,7 +55,8 @@
                     <div class="flex_col1">
                         <h2 class="medium_title1">Thông tin cá nhân<br /></h2>
                         <div class="rect6">
-                            <img class="image2" src="https://scontent.fhan14-5.fna.fbcdn.net/v/t1.15752-9/431818844_721072003507544_3843288212290679559_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=5f2048&_nc_ohc=dD5mXfPm044AX-cIhXG&_nc_ht=scontent.fhan14-5.fna&oh=03_AdQeQ5bR7i1rG_Z5oG7hX27TUOqYHZI_UVzqqlO6uzzNlA&oe=662232B1"/>
+                            <img class="image2"
+                                src="https://scontent.fhan14-5.fna.fbcdn.net/v/t1.15752-9/431818844_721072003507544_3843288212290679559_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=5f2048&_nc_ohc=dD5mXfPm044AX-cIhXG&_nc_ht=scontent.fhan14-5.fna&oh=03_AdQeQ5bR7i1rG_Z5oG7hX27TUOqYHZI_UVzqqlO6uzzNlA&oe=662232B1" />
                         </div>
                     </div>
                     <h2 class="medium_title1">
@@ -86,7 +90,7 @@
                 </div>
                 <div class="flex_col4">
                     <h1 onclick="window.history.back()"><a class="title12 link-click" href="javascript:void(0)">BACK
-                        PAGE</a></h1>
+                            PAGE</a></h1>
                 </div>
             </div>
         </section>
@@ -94,7 +98,7 @@
     </main>
     <script type="text/javascript">
         AOS.init();
-       
+
         const searchButton = document.getElementById('search-button');
         const searchInput = document.getElementById('search-input');
 
@@ -103,7 +107,7 @@
             // Call the search API with the search term
             searchAPI(searchTerm);
         });
-        
+
         function searchAPI(searchTerm) {
             // Make an API request to the search endpoint with the search term
             fetch(`https://api.example.com/search?q=${searchTerm}`)
@@ -115,8 +119,34 @@
                 .catch(error => {
                     // Handle any errors
                     console.error(error);
+                })
+        };
+        // Địa chỉ URL của API
+        const apiURL = 'diachiapi';
+
+        // Hàm để tải dữ liệu
+        async function loadData() {
+            try {
+                // Gửi yêu cầu GET đến API
+                const response = await fetch(apiURL);
+
+                // Kiểm tra nếu yêu cầu thành công
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                // Chuyển đổi dữ liệu trả về thành JSON
+                const data = await response.json();
+
+                // Sử dụng dữ liệu
+                console.log(data);
+            } catch (error) {
+                console.log('Có lỗi xảy ra: ' + error);
+            }
         }
 
+        // Gọi hàm để tải dữ liệu
+        loadData();
     </script>
 </body>
 

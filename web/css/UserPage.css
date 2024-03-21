@@ -115,6 +115,7 @@
   }
 }
 .user-page .image1 {
+  color: #000;
   margin: 24px 0px 0px;
 }
 .user-page .image11 {
@@ -136,7 +137,7 @@
 }
 @media (max-width: 1199px) {
   .user-page .flex_row3 {
-    margin: 81px 0px 162px 100px;
+    margin: 81px auto 162px;
     padding: 0px 0px 0px 0px;
   }
 }
@@ -149,7 +150,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px 0px;
-  width: 354px;
+  width: 50%;
 }
 .user-page .flex_col1 {
   align-items: center;
@@ -235,13 +236,13 @@
   width: 630px;
 }
 .user-page .flex_row5 {
-  display: flex;
-  gap: 0px 10px;
-  justify-content: space-between;
-  margin: 2px auto 172.5px;
-  padding: 0px 318px 0px 0px;
-  position: relative;
-  width: 87.36%;
+    display: flex;
+    gap: 0px 10px;
+    justify-content: space-between;
+    margin: 2px auto 0px;
+    padding: 0px 0px 0px 0px;
+    position: relative;
+    width: 90%;
 }
 @media (max-width: 575px) {
   .user-page .flex_row5 {
@@ -249,11 +250,11 @@
   }
 }
 .user-page .flex_col3 {
-  align-items: center;
+  align-items: flex-start;
   display: flex;
   flex-direction: column;
   margin: 9px 0px 0px;
-  width: 132px;
+  width: 50%;
 }
 @media (max-width: 575px) {
   .user-page .flex_col3 {
@@ -300,7 +301,7 @@
   flex-direction: column;
   gap: 10px 0px;
   margin: 0px 0px 105.5px;
-  width: 300px;
+  width: 50%;
 }
 @media (max-width: 575px) {
   .user-page .flex_col4 {

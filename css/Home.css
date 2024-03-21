@@ -4,6 +4,10 @@
   flex-direction: column;
   overflow: hidden;
 }
+a :hover{
+  color:#000;
+  text-decoration: none;
+}
 .home .section1 {
   background-color: rgba(237, 148, 148, 1);
   display: flex;
@@ -12,7 +16,7 @@
   top:0px;
   right: 0px;
   left: 0px;
-
+  z-index: 1;
 }
 .home .flex_row {
   display: flex;
@@ -85,6 +89,7 @@
   text-align: center;
 }
 .link-click{
+  color:#000;
   text-decoration: none;
 }
 .home .flex_row2 {
@@ -115,60 +120,39 @@
   width: 50px;
 }
 
-.slide-show{
-  width: 600px;
-  display:flex;
-  align-items: center;
-  justify-items: center;
-}
-.list-slide{
-  display:flex;
-  width:500px;
-  overflow: hidden;
-  
-}
+
 .home .section2 {
   margin-top: 100px;
   background-color: white;
   display: flex;
-  flex-direction: column;
-  min-height: 301px;
+  height: 400px;
 }
 .slider {
+  display:flex;
+  justify-items:center;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
   width: 100%;
   height: 400px;
-  overflow: hidden;
-  position: relative;
+  margin: 0px auto;
 }
-
-.slide {
+.slide-show{
   width: 100%;
-  height: 100%;
-  position: absolute;
-  top:0;
-  left:0;
-  animation: slide 5s infinite;
-  opacity: 0;
+  overflow:hidden;
+}
+.list-slide{
+  display:flex;
+  flex-direction: row;
+}
+.slide-item{
+  width: 100%;
+  height: 400px;
 }
 
-.slide:nth-child(1) {
-  animation-delay: 0s;
-}
 
-.slide:nth-child(2) {
-  animation-delay: 0s;
-}
 
-.slide:nth-child(3) {
-  animation-delay: 0s;
-}
-@keyframes slideShow {
-  0% {opacity: 0;}
-  8% {opacity: 1;}
-  33% {opacity: 1;}
-  41% {opacity: 0;}
-  100% {opacity: 0;}
-}
+
 
 .caption {
   position: absolute;

@@ -4,6 +4,10 @@
   flex-direction: column;
   overflow: hidden;
 }
+a{
+  color:#000;
+  text-decoration: none;
+}
 .admin-page .section1 {
   background-color: rgba(237, 148, 148, 1);
   display: flex;
@@ -47,7 +51,8 @@
 .search-button:hover {
   background-color: #444;
 }
-.link-click{
+ .section1 .link-click{
+  color:#000;
   text-decoration: none;
 }
 @media (max-width: 991px) {
@@ -93,7 +98,9 @@
     justify-content: flex-end;
   }
 }
-
+.image1{
+  color:#000;
+}
 .admin-page .image11 {
   height: 50px;
   width: 50px;
