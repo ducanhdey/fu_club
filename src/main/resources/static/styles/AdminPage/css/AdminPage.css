@@ -331,8 +331,33 @@ a{
   min-height: 254px;
 }
 .admin-page .rect11 {
-  background-color: #d9d9d9;
+  width: 80%;
+  margin: 60px auto 0px;
+  margin-top: 60px;
+  background-color: #fff;
   min-height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+#input-content {
+  min-height: 190px;
+  width: 98%;
+  height: 98%;
+  background-color: #fff;
+}
+
+.form-them-bai-viet {
+  width: 100%;
+
+}
+
+.them-bai-viet {
+  min-height: 150px;
+  width: 100%;
 }
 .admin-page .section6 {
   display: flex;

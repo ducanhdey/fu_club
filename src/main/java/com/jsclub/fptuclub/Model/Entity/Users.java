@@ -44,9 +44,14 @@ public class Users {
 	@JoinColumn(name = "role_role_id")
 	private Role role;
 
-	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH },fetch = FetchType.EAGER)
-	@JoinTable(name = "Manage", joinColumns = @JoinColumn(name = "users_UserID"), inverseJoinColumns = @JoinColumn(name = "CLBs_cid"))
-	private Set<CLB> manage = new LinkedHashSet<>();
+	@OneToOne(cascade = CascadeType.ALL, optional = false, orphanRemoval = true)
+	@JoinColumn(name = "manage_clb_cid", nullable = true)
+	private CLB manage_clb;
+
+//	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH },fetch = FetchType.EAGER)
+//	@JoinTable(name = "Manage", joinColumns = @JoinColumn(name = "users_UserID"), inverseJoinColumns = @JoinColumn(name = "CLBs_cid"))
+//	private Set<CLB> manage = new LinkedHashSet<>();
+
 
 	public Users(int userID, String username, String password, Date created, boolean userStatus, String email, String fullName, String studentId, String gender) {
 		this.userID = userID;

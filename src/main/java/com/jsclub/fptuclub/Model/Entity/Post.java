@@ -15,10 +15,7 @@ public class Post {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "club_id_cid", referencedColumnName = "CID")
     private CLB clubID;
-    @Column(name = "Title", nullable = false)
-    private String title;
-    @Column(name = "Image")
-    private String Image;
+
     @Column(name = "Content", nullable = false)
     private String content;
 }

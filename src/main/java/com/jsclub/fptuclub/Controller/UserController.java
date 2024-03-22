@@ -1,6 +1,7 @@
 package com.jsclub.fptuclub.Controller;
 
 import com.jsclub.fptuclub.JWT.JwtTokenProvider;
+import com.jsclub.fptuclub.Model.Entity.CLB;
 import com.jsclub.fptuclub.Model.Entity.Role;
 import com.jsclub.fptuclub.Model.Entity.Users;
 import com.jsclub.fptuclub.Model.Repository.UserRepository;
@@ -37,7 +38,7 @@ public class UserController {
 	@Autowired
 	private UserRepository userRepository;
 
-	private Users userlogin = new Users();
+	protected static Users  userlogin = new Users();
 
 	@GetMapping("/")
 	public String startPage(Model model) {
@@ -142,7 +143,9 @@ public class UserController {
 		user.setStudentId(signupRequest.getStudentId());
 		user.setGender(signupRequest.getGender());
 		user.setUserStatus(true);
-
+		CLB clb = null;
+		clb = new CLB(0,"No club","NC","no",now,"logo","intro","fb","list");
+		user.setManage_clb(clb);
 		user.setRole(new Role("USER"));
 
 
@@ -152,6 +155,8 @@ public class UserController {
 	@GetMapping("/home/userpage")
 	public String getUserPage(Model model) {
 		model.addAttribute("users", userlogin);
+		model.addAttribute("contentType", "application/json");
+
 		return "UserPage";
 	}
 

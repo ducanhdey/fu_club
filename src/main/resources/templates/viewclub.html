@@ -43,7 +43,7 @@
 
                 <div class="flex_row2">
                     <a class="link-click" th:href="@{/home/userpage}"><i class="fa-solid fa-2xl fa-user image1"></i></a>
-                    <a class="link-click" href="#"><i id="bell" class="fa-solid fa-2xl fa-bell image1"></i></a>
+                    <a class="link-click" th:href="@{/admin/adminpage}"><i id="bell" class="fa-solid fa-2xl fa-bell image1"></i></a>
                     <a class="link-click" href="#"><img class="image11"
                             th:src="@{/styles/ViewClub/assets/certified_quality_certification_badge.png}" alt="alt text" /></a>
                 </div>
@@ -107,7 +107,10 @@
             <div class="section61">
                 <div class="flex_col4">
                     <div class="flex_col5">
-                        <div class="rect13"></div>
+<!--               post         -->
+                        <div th:each="post : ${listpost}" class="rect13">
+
+                        </div>
                         <div class="rect14"></div>
                     </div>
                     <div class="flex_row8">
