@@ -48,7 +48,7 @@
                 <a class="link-click" th:href="@{/admin/adminpage}"><i id="bell"
                                                                        class="fa-solid fa-2xl fa-bell image1"></i></a>
                 <a class="link-click" href="#"><img class="image11"
-                                                    th:src="@{./assets/certified_quality_certification_badge.png}"
+                                                    th:src="@{/styles/AdminPage/assets/certified_quality_certification_badge.png}"
                                                     alt="alt text"/></a>
             </div>
         </div>
@@ -113,11 +113,12 @@
     <section class="section6">
         <div class="section61">
             <div class="flex_col4">
-                <div class="flex_col5">
-                    <div class="rect14" th:each="post : ${listpost}">
+                <div class="flex_col5" th:each="post : ${listpost}">
+                    <div class="rect14" >
                         <p th:text="${post.content}"></p>
-                        <button type="submit"><a th:href="@{'/admin/delete/'+${post.postID}}">Delete post</a></button>
                     </div>
+                    <button type="submit"><a class="delete-button" th:href="@{'/admin/delete/'+${post.postID}}">Delete post</a></button>
+
                 </div>
             </div>
         </div>

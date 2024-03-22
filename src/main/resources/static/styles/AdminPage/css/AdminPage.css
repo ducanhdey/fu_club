@@ -152,6 +152,16 @@ a{
   width: 50%;
   align-items: flex-start;
 }
+.delete-button {
+  border-radius: 25px;
+  height: 50px;
+  width: 100px;
+  display: flex;
+  border: solid 1px;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(237, 148, 148, 1);
+}
 .admin-page .title2 {
   align-items: center;
   color: black;
@@ -408,8 +418,8 @@ img{
   background-color: white;
   display: flex;
   flex-direction: column;
-  margin: 82px auto 0px;
-  width: 74.31%;
+  margin: 0px auto 0px;
+  width: 80%;
 }
 .admin-page .flex_col4 {
   align-items: center;
@@ -431,10 +441,13 @@ img{
   width: 79.44%;
 }
 .admin-page .rect14 {
-  background-color: #d9d9d9;
+  text-align: justify;
+  background-color: #fff;
+  border: solid 3px;
   min-height: 141px;
   width: 100%;
 }
+
 .admin-page .flex_row8 {
   align-items: center;
   display: flex;
