@@ -1,6 +1,6 @@
 .page.main {
   background: url("../assets/cartoon_school_life_scene.png")  center center/100% 100% no-repeat white;
-  /*background-color: white;*/
+  background-color: white;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -85,7 +85,7 @@
 .page .flex_col {
   display: flex;
   flex-direction: column;
-  gap: 50px 0px;
+  gap: 15px 0px;
   margin: 240px auto 37px;
   width: 76.4%;
 }
@@ -134,11 +134,12 @@
 }
 .page .content_box {
   background-color: #8db57a;
-  border-radius: 19px 19px 19px 19px;
-  display: flex;
-  flex-direction: column;
-  margin: 0px 30.89% 0px auto;
-  width: 112px;
+    border-radius: 19px 19px 19px 19px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 112px;
+  
 }
 .page .title {
   align-items: center;
@@ -250,3 +251,37 @@
     left: 80px;
   }
 }
+.go-button {
+  background-color: rgba(141, 181, 122, 1);
+    color: white;
+    padding: 7px 9px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 16px;
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    display: block;
+    margin: 0 auto;
+}
+
+.go-button:hover {
+  background-color: #e056a8;
+}
+.form-control {
+  width: 100%;
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-top: 10px;
+}
+.box{
+  width: 328px;
+  height: 65px;
+  flex-shrink: 0;
+  border-radius: 50px;
+  background: #C9E4F5;
+}
+

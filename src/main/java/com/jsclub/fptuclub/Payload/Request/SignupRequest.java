@@ -12,36 +12,36 @@ public class SignupRequest {
 	public SignupRequest() {
 	}
 
-	public SignupRequest(String username, String password, String email, Date created, boolean userStatus, Role role,String studentid,String fullName,String gender) {
+	public SignupRequest(String username, String password, String email, Date created, boolean userStatus, Role role,
+			String fullName, String studentId, String gender) {
 		this.username = username;
 		this.password = password;
 		this.email = email;
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Date now = new Date();
 		String dateNow = sdf.format(now);
-		try{
+		try {
 			this.created = sdf.parse(dateNow);
-		}catch (Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		this.userStatus = true;
 		this.role = role;
-		this.studentid = studentid;
 		this.fullName = fullName;
+		this.studentId = studentId;
 		this.gender = gender;
-
 	}
 
 	private String username;
 	private String password;
 	private String email;
-	private String fullName;
-	private String gender;
-	private String studentid;
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date created;
 	private boolean userStatus;
 	private Role role;
+	private String fullName;
+	private String studentId;
+	private String gender;
 
 	public String getUsername() {
 		return username;
@@ -99,19 +99,19 @@ public class SignupRequest {
 		this.fullName = fullName;
 	}
 
+	public String getStudentId() {
+		return studentId;
+	}
+
+	public void setStudentId(String studentId) {
+		this.studentId = studentId;
+	}
+
 	public String getGender() {
 		return gender;
 	}
 
 	public void setGender(String gender) {
 		this.gender = gender;
-	}
-
-	public String getStudentid() {
-		return studentid;
-	}
-
-	public void setStudentid(String studentid) {
-		this.studentid = studentid;
 	}
 }

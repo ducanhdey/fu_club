@@ -3,27 +3,23 @@ package com.jsclub.fptuclub.Controller;
 import com.jsclub.fptuclub.JWT.JwtTokenProvider;
 import com.jsclub.fptuclub.Model.Entity.Role;
 import com.jsclub.fptuclub.Model.Entity.Users;
+import com.jsclub.fptuclub.Model.Repository.UserRepository;
 import com.jsclub.fptuclub.Model.Service.RoleService;
 import com.jsclub.fptuclub.Model.Service.UserService;
 import com.jsclub.fptuclub.Payload.Request.LoginRequest;
 import com.jsclub.fptuclub.Payload.Request.SignupRequest;
 import com.jsclub.fptuclub.Security.CustomUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Date;
 
 @CrossOrigin
 @Controller
@@ -38,21 +34,52 @@ public class UserController {
 	private JwtTokenProvider jwtTokenProvider;
 	@Autowired
 	private AuthenticationManager authenticationManager;
+	@Autowired
+	private UserRepository userRepository;
 
+	private Users userlogin = new Users();
 
 	@GetMapping("/")
 	public String startPage(Model model) {
 		model.addAttribute("contentType", "application/json");
 		return "index";
 	}
+
 	@GetMapping("/home")
-	public String homePage(Model model){
+	public String homePage(Model model) {
+		model.addAttribute("contentType", "application/json");
 		return "home";
+	}
+	@PostMapping("/change")
+	public String changePass(@RequestParam("newPass") String newPass) {
+		Users user = new Users(userlogin.getUserID(),
+				userlogin.getUsername(),
+				userlogin.getPassword(),
+				userlogin.getCreated(),
+				true,
+				userlogin.getEmail(),
+				userlogin.getFullName(),
+				userlogin.getStudentId(),
+				userlogin.getGender()
+				)
+				;
+		user.setRole(new Role("USER"));
+		System.out.println(userlogin.toString());
+		user.setPassword(passwordEncoder.encode(newPass));
+		userRepository.deleteById(userlogin.getUserID());
+		userRepository.save(user);
+		return "redirect:/home/userpage";
+
+	}
+	@GetMapping("/changepass")
+	public String changePass(Model model){
+		model.addAttribute("user", userlogin);
+		return "Changepassword";
 	}
 	@GetMapping("/login")
 	public String loginPage(Model model) {
 		LoginRequest loginRequest = new LoginRequest();
-		model.addAttribute("loginRequest",loginRequest);
+		model.addAttribute("loginRequest", loginRequest);
 		model.addAttribute("contentType", "application/json");
 		return "login";
 
@@ -60,24 +87,33 @@ public class UserController {
 
 	@PostMapping("/signin")
 	public String loginUser(@ModelAttribute("loginRequest") LoginRequest loginRequest) {
-		Authentication authentication = authenticationManager.authenticate(
-				new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword())
-		);
-		SecurityContextHolder.getContext().setAuthentication(authentication);
-		CustomUserDetails customUserDetails = (CustomUserDetails) authentication.getPrincipal();
-		//Sinh jwt tra ve client
-		String jwt = jwtTokenProvider.generateToken(customUserDetails);
+//		Authentication authentication = authenticationManager.authenticate(
+//				new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword())
+//		);
+//		SecurityContextHolder.getContext().setAuthentication(authentication);
+//		CustomUserDetails customUserDetails = (CustomUserDetails) authentication.getPrincipal();
+//		//Sinh jwt tra ve client
+//		String jwt = jwtTokenProvider.generateToken(customUserDetails);
+//
+		if (userService.findByUsername(loginRequest.getUsername()) != null) {
+			if (!passwordEncoder.matches(loginRequest.getPassword(), userService.findByUsername(loginRequest.getUsername()).getPassword())) {
+				userlogin = userService.findByUsername(loginRequest.getUsername());
+				return "redirect:/home";
+			}
+		}
+			return "redirect:/login";
 
-		return "redirect:/home";
+
 	}
 
 	@GetMapping("/registration")
 	public String registration(Model model) {
 		SignupRequest signupRequest = new SignupRequest();
-		model.addAttribute("signupRequest",signupRequest);
+		model.addAttribute("signupRequest", signupRequest);
 		model.addAttribute("contentType", "application/json");
 		return "registration";
 	}
+
 	@PostMapping("/signup")
 
 	public String registerUser(@ModelAttribute("signupRequest") SignupRequest signupRequest) {
@@ -89,8 +125,6 @@ public class UserController {
 //			boolean checkExistEmail = true;
 			return "redirect:/registration?existemail";
 		}
-
-
 
 		Users user = new Users();
 		user.setUsername(signupRequest.getUsername());
@@ -105,7 +139,7 @@ public class UserController {
 			e.printStackTrace();
 		}
 		user.setFullName(signupRequest.getFullName());
-		user.setStudentid(signupRequest.getStudentid());
+		user.setStudentId(signupRequest.getStudentId());
 		user.setGender(signupRequest.getGender());
 		user.setUserStatus(true);
 
@@ -115,5 +149,12 @@ public class UserController {
 		userService.saveOrUpdate(user);
 		return "redirect:/login";
 	}
+	@GetMapping("/home/userpage")
+	public String getUserPage(Model model) {
+		model.addAttribute("users", userlogin);
+		return "UserPage";
+	}
+
+
 
 }

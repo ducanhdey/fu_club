@@ -42,19 +42,19 @@
                         <form th:action="@{/signup}" method="post" th:object="${signupRequest}">
 
                             <label class="medium_title1" for="username">Tên đăng nhập:</label>
-                            <input type="text" id="username"  th:field="*{username}"><br />
+                            <input type="text" id="username"  th:field="*{username}" required><br />
                             <label class="medium_title2" for="msv">Mã Sinh Viên:</label>
-                            <input type="text" id="msv" th:field="*{studentid}"><br />
+                            <input type="text" id="msv" th:field="*{studentId}" required><br />
                             <label class="medium_title2" for="name">Họ và tên:</label>
-                            <input type="text" id="name"  th:field="*{fullName}"><br />
+                            <input type="text" id="name"  th:field="*{fullName}" required><br />
                             <label class="medium_title2" for="email">Email:</label>
-                            <input type="text" id="email"  th:field="*{email}"><br />
+                            <input type="text" id="email"  th:field="*{email}" required><br />
                             <label class="medium_title2" for="password">Mật khẩu</label>
-                            <input type="password" id="password" th:field="*{password}" ><br />
+                            <input type="password" id="password" th:field="*{password}" required ><br />
                             <label class="medium_title2" for="repassword">Nhập lại mật khẩu</label>
-                            <input type="password" id="repassword"  th:field="*{password}"><br />
+                            <input type="password" id="repassword"  th:field="*{password}" required><br />
                             <label class="medium_title3" for="gender">Giới tính</label>
-                            <select  id="gender" th:field="*{gender}">
+                            <select  id="gender" th:field="*{gender}" required>
                                 <option value="MALE">MALE</option>
                                 <option value="FEMALE">FEMALE</option>
                             </select>

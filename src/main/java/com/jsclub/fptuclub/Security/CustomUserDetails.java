@@ -1,4 +1,5 @@
 package com.jsclub.fptuclub.Security;
+
 import com.jsclub.fptuclub.Model.Entity.Users;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
@@ -15,33 +16,42 @@ import java.util.stream.Collectors;
 
 @Data
 @AllArgsConstructor
-public class CustomUserDetails implements UserDetails{
+public class CustomUserDetails implements UserDetails {
 	private int userId;
 	private String userName;
 	@JsonIgnore
 	private String password;
 	private String email;
 	private boolean userStatus;
-	//Quyen cua user
-	private Collection<? extends  GrantedAuthority> authorities;
+	private String fullName;
+	private String studentId;
+	private String gender;
+	// Quyen cua user
+	private Collection<? extends GrantedAuthority> authorities;
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return this.authorities;
 	}
+
 	// tu chuyen thong tin tu uuser sang userdetail
-	public static CustomUserDetails mapUserToUserDetail(Users user){
-		//lay cac quyen tu user
-		SimpleGrantedAuthority authority = new SimpleGrantedAuthority("USER");
+	public static CustomUserDetails mapUserToUserDetail(Users user) {
+		// lay cac quyen tu user
+		SimpleGrantedAuthority authority = new SimpleGrantedAuthority(user.getRole().getRoleName());
 		List<GrantedAuthority> listAuthorities = new ArrayList<GrantedAuthority>();
 		listAuthorities.add(authority);
-		//tra ve doi tuong customuserdetail
+		// tra ve doi tuong customuserdetail
 		return new CustomUserDetails(user.getUserID(),
-									 user.getUsername(),
-									 user.getPassword(),
-									 user.getEmail(),
-									 user.isUserStatus(),
-									 listAuthorities);
+				user.getUsername(),
+				user.getPassword(),
+				user.getEmail(),
+				user.isUserStatus(),
+				user.getFullName(),
+				user.getStudentId(),
+				user.getGender(),
+				listAuthorities);
 	}
+
 	@Override
 	public String getPassword() {
 		return this.password;
