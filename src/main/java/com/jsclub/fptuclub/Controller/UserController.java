@@ -9,11 +9,8 @@ import com.jsclub.fptuclub.Model.Service.RoleService;
 import com.jsclub.fptuclub.Model.Service.UserService;
 import com.jsclub.fptuclub.Payload.Request.LoginRequest;
 import com.jsclub.fptuclub.Payload.Request.SignupRequest;
-import com.jsclub.fptuclub.Security.CustomUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +22,7 @@ import java.util.Date;
 @CrossOrigin
 @Controller
 public class UserController {
+	protected static Users userlogin = new Users();
 	@Autowired
 	private UserService userService;
 	@Autowired
@@ -38,12 +36,15 @@ public class UserController {
 	@Autowired
 	private UserRepository userRepository;
 
-	protected static Users  userlogin = new Users();
-
 	@GetMapping("/")
 	public String startPage(Model model) {
 		model.addAttribute("contentType", "application/json");
 		return "index";
+	}
+
+	@GetMapping("/sorry")
+	public String sorryPage(Model model) {
+		return "sorry";
 	}
 
 	@GetMapping("/home")
@@ -51,31 +52,34 @@ public class UserController {
 		model.addAttribute("contentType", "application/json");
 		return "home";
 	}
-	@PostMapping("/change")
-	public String changePass(@RequestParam("newPass") String newPass) {
-		Users user = new Users(userlogin.getUserID(),
-				userlogin.getUsername(),
-				userlogin.getPassword(),
-				userlogin.getCreated(),
-				true,
-				userlogin.getEmail(),
-				userlogin.getFullName(),
-				userlogin.getStudentId(),
-				userlogin.getGender()
-				)
-				;
-		user.setRole(new Role("USER"));
-		System.out.println(userlogin.toString());
-		user.setPassword(passwordEncoder.encode(newPass));
-		userRepository.save(user);
-		return "redirect:/home/userpage";
 
+	@GetMapping("/change")
+	public String changePass(@RequestParam("newPass") String newPass) {
+//		Users user = new Users(userlogin.getUserID(),
+//				userlogin.getUsername(),
+//				userlogin.getPassword(),
+//				userlogin.getCreated(),
+//				true,
+//				userlogin.getEmail(),
+//				userlogin.getFullName(),
+//				userlogin.getStudentId(),
+//				userlogin.getGender()
+//				)
+//				;
+//		user.setRole(new Role("USER"));
+//		System.out.println(userlogin.toString());
+//		user.setPassword(passwordEncoder.encode(newPass));
+//		userRepository.save(user);
+//		return "redirect:/home/userpage";
+		return "redirect:/sorry";
 	}
+
 	@GetMapping("/changepass")
-	public String changePass(Model model){
+	public String changePass(Model model) {
 		model.addAttribute("user", userlogin);
 		return "Changepassword";
 	}
+
 	@GetMapping("/login")
 	public String loginPage(Model model) {
 		LoginRequest loginRequest = new LoginRequest();
@@ -101,7 +105,7 @@ public class UserController {
 				return "redirect:/home";
 			}
 		}
-			return "redirect:/login";
+		return "redirect:/login";
 
 
 	}
@@ -143,7 +147,7 @@ public class UserController {
 		user.setGender(signupRequest.getGender());
 		user.setUserStatus(true);
 		CLB clb = null;
-		clb = new CLB(0,"No club","NC","no",now,"logo","intro","fb","list");
+		clb = new CLB(0, "No club", "NC", "no", now, "logo", "intro", "fb", "list");
 		user.setManage_clb(clb);
 		user.setRole(new Role("USER"));
 
@@ -151,6 +155,7 @@ public class UserController {
 		userService.saveOrUpdate(user);
 		return "redirect:/login";
 	}
+
 	@GetMapping("/home/userpage")
 	public String getUserPage(Model model) {
 		model.addAttribute("users", userlogin);
@@ -158,7 +163,6 @@ public class UserController {
 
 		return "UserPage";
 	}
-
 
 
 }
