@@ -5,9 +5,17 @@
   overflow: hidden;
 }
 .user-page .section1 {
-  background-color: rgba(237, 148, 148, 0.498);
+  background-color: rgba(237, 148, 148, 1);
   display: flex;
   flex-direction: column;
+  position: fixed;
+  top:0px;
+  right: 0px;
+  left: 0px;
+}
+a{
+  text-decoration: none;
+  color:black;
 }
 .user-page .flex_row {
   display: flex;
@@ -118,6 +126,7 @@
   width: 50px;
 }
 .user-page .section2 {
+  margin-top:100px;
   display: flex;
   flex-direction: column;
 }

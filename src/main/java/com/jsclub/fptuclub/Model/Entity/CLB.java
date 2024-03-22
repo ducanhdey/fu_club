@@ -3,11 +3,12 @@ package com.jsclub.fptuclub.Model.Entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.DynamicInsert;
 
 import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
-
+@DynamicInsert
 @Entity
 @Table(name = "CLB")
 @Getter

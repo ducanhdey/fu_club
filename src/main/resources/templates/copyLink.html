@@ -7,25 +7,25 @@
 </head>
 <body>
 <h1>Share Page</h1>
-<button id="shareButton">Share</button>
+    <button id="shareButton">Share</button>
 
-<!-- Script to handle share button click -->
-<script th:inline="javascript">
-    $(document).ready(function() {
-        $('#shareButton').click(function() {
-            // Lấy URL hiện tại
-            var currentUrl = "ducanhdeptrai";
+    <!-- Script to handle share button click -->
+    <script th:inline="javascript">
+        $(document).ready(function() {
+            $('#shareButton').click(function() {
+                // Lấy URL hiện tại
+                var currentUrl = "ducanhdeptrai";
 
-            // Copy URL vào clipboard
-            navigator.clipboard.writeText(currentUrl)
-                .then(function() {
-                    alert("Copy URL successfully!!!")
-                })
-                .catch(function(err) {
-                    console.error('Cannot copy: ', err);
-                });
+                // Copy URL vào clipboard
+                navigator.clipboard.writeText(currentUrl)
+                    .then(function() {
+                        alert("Copy URL successfully!!!")
+                    })
+                    .catch(function(err) {
+                        console.error('Cannot copy: ', err);
+                    });
+            });
         });
-    });
-</script>
+    </script>
 </body>
 </html>

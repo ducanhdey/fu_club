@@ -11,7 +11,10 @@
     <link rel="stylesheet" type="text/css"
           th:href="@{https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css}"
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"/>
-
+    <link href="/styles/Fontaws/css/fontawesome.css" rel="stylesheet" />
+    <link href="/styles/Fontaws/css/brands.css" rel="stylesheet" />
+    <link href="/styles/Fontaws/css/solid.css" rel="stylesheet" />
+    <link href="/styles/Fontaws/css/all.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" th:href="@{https://unpkg.com/aos@2.3.1/dist/aos.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/styles/userpage/css/common.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/styles/userpage/css/fonts.css}"/>
@@ -43,8 +46,8 @@
             </a>
 
             <div class="flex_row2">
-                <i class="fa-solid fa-2xl fa-user image1"></i>
-                <i class="fa-solid fa-2xl fa-bell image1"></i>
+                <a class="link-click" th:href="@{/home/userpage}"><i class="fa-solid fa-2xl fa-user image1"></i></a>
+                <a class="link-click" th:href="@{/admin/adminpage}"><i id="bell" class="fa-solid fa-2xl fa-bell image1"></i></a>
                 <img class="image11" th:src="@{/styles/userpage/assets/certified_quality_certification_badge.png}" alt="alt text"/>
             </div>
         </div>
@@ -67,10 +70,10 @@
 
             </div>
             <div class="flex_col2">
-                <div class="flex_row4">
-                    <a href="#" class="medium_title11 link-click">Đăng nhập</a>
-                    <a href="#" class="medium_title1 link-click">Đăng kí</a>
-                </div>
+<!--                <div class="flex_row4">-->
+<!--                    <a href="#" class="medium_title11 link-click">Đăng nhập</a>-->
+<!--                    <a href="#" class="medium_title1 link-click">Đăng kí</a>-->
+<!--                </div>-->
                 <a th:href="@{/changepass}" class="medium_title12 link-click">Đổi mật khẩu</a>
                 <a th:href="@{#}" class="medium_title13 link-click">Đổi ảnh đại diện</a>
                 <a th:href="@{/home/logout}" class="medium_title12 link-click">Đăng xuất</a>

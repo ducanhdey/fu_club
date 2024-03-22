@@ -17,6 +17,42 @@ a{
   right: 0px;
   left: 0px;
 }
+table{
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 16px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+th,td{
+  text-align: left;
+  padding:10px;
+  border-bottom: 1px solid #ddd;
+}
+th{
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+tr:nth-child(even){
+  background-color: #f2f2f2;
+}
+tr:hover{
+  background-color: #ddd;
+}
+td:last-child{
+  text-align: right;
+}
+th:last-child,td:last-child{
+  text-align: center;
+}
+td a{
+  color: #007bff;
+  text-decoration: none;
+}
+td a:hover{
+  color:#0056b3;
+  text-decoration: underline;
+}
 .admin-page .flex_row {
   display: flex;
   gap: 0px 10px;
@@ -106,7 +142,7 @@ a{
   width: 50px;
 }
 .admin-page .section2 {
-  margin-top: 100px;
+  margin-top: 140px;
   background: var(--src) center center/100% 100% no-repeat;
   display: flex;
   flex-direction: column;
@@ -150,15 +186,14 @@ a{
   display: flex;
   flex-direction: column;
   gap: 5px 0px;
-  width: 238px;
+  width: 50%;
+  align-items: flex-start;
 }
 .admin-page .title2 {
   align-items: center;
   color: black;
   display: flex;
   font: 400 30px/1.33 "Exo", Helvetica, Arial, serif;
-  justify-content: center;
-  text-align: center;
   width: 82.77%;
 }
 .admin-page .title21 {

@@ -67,7 +67,6 @@ public class UserController {
 		user.setRole(new Role("USER"));
 		System.out.println(userlogin.toString());
 		user.setPassword(passwordEncoder.encode(newPass));
-		userRepository.deleteById(userlogin.getUserID());
 		userRepository.save(user);
 		return "redirect:/home/userpage";
 

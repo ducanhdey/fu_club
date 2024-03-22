@@ -150,13 +150,15 @@ a{
   display: flex;
   flex-direction: column;
   gap: 5px 0px;
+  width: 50%;
+  align-items: flex-start;
 }
 .admin-page .title2 {
   align-items: center;
   color: black;
   display: flex;
   font: 400 30px/1.33 "Exo", Helvetica, Arial, serif;
-  justify-content: center;
+
   text-align: center;
   width: 82.77%;
 }
@@ -218,6 +220,7 @@ a{
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2470588235);
 }
 .admin-page .section4 {
+  height: 400px;
   display: flex;
   flex-direction: column;
 }
@@ -254,6 +257,7 @@ a{
   gap: 71px 0px;
   margin: 10px 0px 60px 10px;
   width: 80.95%;
+
 }
 .admin-page .title1 {
   align-items: center;
@@ -326,7 +330,7 @@ img{
 }
 .admin-page .rect10 {
   background-color: #d9d9d9;
-  height: 300px;
+  height: 100%;
   min-height: 300px;
   width: 50%;
 }

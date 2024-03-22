@@ -3,10 +3,12 @@ package com.jsclub.fptuclub.Model.Entity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.DynamicInsert;
 
 import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
+@DynamicInsert
 
 @Entity
 @Table(name = "Users")

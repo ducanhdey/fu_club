@@ -5,7 +5,6 @@ import com.jsclub.fptuclub.Model.Entity.Post;
 import com.jsclub.fptuclub.Model.Repository.CLBRepository;
 import com.jsclub.fptuclub.Model.Repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -41,7 +40,7 @@ public class AdminController {
 		postRepository.save(post);
 		return "redirect:/admin/adminpage";
 	}
-	@PostMapping("/delete/{id}")
+	@GetMapping("/delete/{id}")
 	public String deletePost(@PathVariable("id") Integer id){
 		postRepository.deleteById(id);
 		return "redirect:/admin/adminpage";

@@ -2,6 +2,9 @@ package com.jsclub.fptuclub.Model.Entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.DynamicInsert;
+
+@DynamicInsert
 
 @Entity
 @Table(name = "Post")
@@ -12,7 +15,7 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PostID")
     private int postID;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "club_id_cid", referencedColumnName = "CID")
     private CLB clubID;
 

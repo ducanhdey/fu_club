@@ -1,8 +1,11 @@
 package com.jsclub.fptuclub.Model.Entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.DynamicInsert;
+
 @Entity
 @Table(name = "Type")
+@DynamicInsert
 public class Type {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

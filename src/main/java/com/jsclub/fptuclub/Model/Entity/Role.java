@@ -4,9 +4,11 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicInsert;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
+@DynamicInsert
 
 @Entity
 @Table(name = "Roles")

@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import java.util.List;
-
 import static com.jsclub.fptuclub.Controller.UserController.userlogin;
 
 @Controller
@@ -25,7 +24,7 @@ public class CLBController {
 		CLB clb = clbRepository.findByCID(id);
 		model.addAttribute("club", clb);
 
-		List<Post> listPost = (List<Post>) postRepository.findAllByClubID(userlogin.getManage_clb());
+		List<Post> listPost = postRepository.findAllByClubID(clb);
 		if (listPost != null) {
 			model.addAttribute("listpost", listPost);
 		}
